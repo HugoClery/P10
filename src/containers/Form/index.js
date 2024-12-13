@@ -15,11 +15,10 @@ const Form = ({ onSuccess, onError }) => {
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
-      setSending(true);
-      // We try to call mockContactApi
+      setSending(true); // Affiche "En cours"
       try {
+        await mockContactApi(); // Attendre la fin de l'appel asynchrone
         setSending(false);
-        // Ajout de onSucces dans le try pour afficher la confirmation du message envoyé
         onSuccess();
       } catch (err) {
         setSending(false);
